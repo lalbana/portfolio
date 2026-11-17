@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Leena's UX Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: blue and green page. A forest-green Lifelink case study, then three lighter demo cards, each tinted in its own app's hue (slate, teal, ocean blue). */
+:root {
+  --bg: #EFF6F6;
+  --surface: #FFFFFF;
+  --ink: #10262F;
+  --muted: #4A6670;
+  --line: #1F4A5C;
+  --accent: #2F6F8F;
+  --accent-soft: #C3DCE8;
+  --accent-faint: #E2EFF3;
+  --on-accent: #F4FAFC;
+  --green: #3E7358;
+  --green-soft: #C8DFD0;
+  --blue-deep: #14507A;
+  --ll-bg: #1E4130;
+  --ll-ink: #EAF3ED;
+  --ll-muted: #B4CDBF;
+  --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1A21; --surface: #162830; --ink: #E8F3F6; --muted: #A3BFC9; --line: #7FB0C6;
+    --accent: #6FB0D0; --accent-soft: #1F3F4F; --accent-faint: #13262F; --on-accent: #0C1A21;
+    --green: #7DB394; --green-soft: #1F3B2D; --blue-deep: #1B5F8F;
+    --ll-bg: #1B3A2B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1A21; --surface: #162830; --ink: #E8F3F6; --muted: #A3BFC9; --line: #7FB0C6;
+  --accent: #6FB0D0; --accent-soft: #1F3F4F; --accent-faint: #13262F; --on-accent: #0C1A21;
+  --green: #7DB394; --green-soft: #1F3B2D; --blue-deep: #1B5F8F;
+  --ll-bg: #1B3A2B;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 62ch; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-block: 20px; }
+.logo { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo i { width: 22px; height: 22px; border-radius: 50%; background: var(--green); border: 2px solid var(--line); display: inline-block; }
+.links { display: flex; gap: 8px; flex-wrap: wrap; }
+.links a { text-decoration: none; font-weight: 700; font-size: .95rem; padding: 6px 14px; border-radius: 999px; border: 2px solid transparent; }
+.links a:hover { border-color: var(--line); background: var(--accent-faint); }
+
+.hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; padding-block: 36px 56px; }
+.hero > * { min-width: 0; }
+.tag { display: inline-block; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; background: var(--green-soft); color: var(--ink); padding: 5px 14px; border-radius: 999px; border: 2px solid var(--line); margin-bottom: 18px; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 700; }
+.hero h1 span { background: linear-gradient(transparent 62%, var(--accent-soft) 62% 92%, transparent 92%); }
+.hero p { margin-top: 18px; color: var(--muted); font-size: 1.1rem; }
+.cta { display: inline-block; margin-top: 26px; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; text-decoration: none; background: var(--accent); color: var(--on-accent); padding: 12px 24px; border-radius: 999px; border: 2px solid var(--line); box-shadow: 4px 4px 0 var(--line); transition: transform .15s, box-shadow .15s; }
+.cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
+
+.stickers { position: relative; height: 260px; max-width: 100%; }
+.sticker { position: absolute; border: 2px solid var(--line); border-radius: 22px; box-shadow: 4px 4px 0 var(--line); padding: 12px 16px; font-family: var(--font-display); font-weight: 600; color: var(--on-accent); }
+.s1 { background: var(--accent-soft); color: var(--ink); left: 4%; top: 6%; transform: rotate(-5deg); }
+.s2 { background: var(--green); color: #F4F8F5; right: 2%; top: 30%; transform: rotate(4deg); }
+.s3 { background: var(--blue-deep); color: #EAF4FB; left: 14%; bottom: 4%; transform: rotate(-2deg); }
+.sticker small { display: block; font-family: var(--font-body); font-weight: 600; font-size: .8rem; opacity: .8; }
+
+section { padding-block: 40px; }
+.eyebrow { font-weight: 700; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.case { background: var(--ll-bg); color: var(--ll-ink); border: 2px solid var(--line); border-radius: 32px; box-shadow: 6px 6px 0 var(--line); padding: clamp(20px, 4vw, 40px); }
+.case h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+.case-intro { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: flex-end; justify-content: space-between; }
+.case-intro p { color: var(--ll-muted); }
+.case .eyebrow { color: var(--ll-muted); }
+.case { --c-line: #93BBA3; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.chip { font-weight: 700; font-size: .85rem; padding: 4px 12px; border-radius: 999px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); }
+
+.ll-grid { display: grid; grid-template-columns: minmax(200px, 380px) 1fr; gap: 28px; margin-top: 36px; align-items: start; }
+.ll-grid > * { min-width: 0; }
+.ll-vid { aspect-ratio: 340 / 530; width: 100%; background: #000; }
+@media (max-width: 700px) { .ll-grid { grid-template-columns: 1fr; } .ll-vid { max-width: 320px; margin: 0 auto; } }
+.demos { display: grid; gap: 32px; margin-top: 24px; }
+.demo { margin: 0; min-width: 0; display: grid; grid-template-columns: minmax(200px, 250px) 1fr; gap: 24px; align-items: start; padding: 20px; border: 2px solid var(--c-line); border-radius: 28px; box-shadow: 5px 5px 0 var(--c-line); background: var(--c-bg); color: var(--c-ink); }
+.demo > * { min-width: 0; }
+.board { display: flex; flex-direction: column; gap: 14px; }
+.board img { width: 100%; height: auto; display: block; border-radius: 18px; border: 2px solid var(--c-line, var(--line)); background: #fff; }
+.board .eyebrow { margin: 0; }
+@media (max-width: 700px) { .demo { grid-template-columns: 1fr; } .vid { max-width: 260px; margin: 0 auto; } }
+.d1 { --c-bg: #E7ECF1; --c-ink: #1D2833; --c-muted: #465668; --c-line: #2F3A45; }
+.d2 { --c-bg: #D9EEEC; --c-ink: #0B3533; --c-muted: #35625F; --c-line: #0F4A47; }
+.d3 { --c-bg: #D8E9F6; --c-ink: #0E3A5C; --c-muted: #3F6A8C; --c-line: #14507A; }
+.demo .eyebrow { color: var(--c-muted); }
+.vid { background: #000; border-radius: 20px; border: 2px solid var(--c-line, var(--line)); overflow: hidden; aspect-ratio: 2 / 3; max-width: 100%; }
+.vid video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+.demo h3 { font-size: 1.3rem; }
+.demo p { color: var(--c-muted); font-size: .95rem; margin-top: 4px; }
+
+footer { text-align: center; padding-block: 36px 8px; color: var(--muted); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .stickers { height: 220px; }
+  .persona { grid-template-columns: 1fr; justify-items: start; }
+}
+@media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top"><i></i>Leena's portfolio</a>
+    <div class="links">
+      <a href="#lifelink">Lifelink</a>
+      <a href="#demos">Demos</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <span class="tag">UX design portfolio</span>
+      <h1>Hi, I'm Leena, and here are some of my <span>Figma designs</span>.</h1>
+      <p>Here is my work from UX class: app screens, prototype demos, and the Figma boards behind them. Start with Lifelink, my app for keeping everyday life in one place.</p>
+      <a class="cta" href="#lifelink">See Lifelink</a>
+    </div>
+    <div class="stickers" aria-hidden="true">
+      <div class="sticker s1">Figma<small>screens + flows</small></div>
+      <div class="sticker s2">Prototypes<small>tap + swipe</small></div>
+      <div class="sticker s3">Demos<small>apps that move</small></div>
+    </div>
+  </header>
+
+  <section id="lifelink">
+    <div class="case">
+      <div class="case-intro">
+        <div>
+          <div class="eyebrow">Featured project</div>
+          <h2>Lifelink</h2>
+          <p style="margin-top:12px">One app that links the things people juggle every day: reminders, a personality quiz that finds things that fit you, and budgeting. Made for anyone balancing life.</p>
+          <div class="chips">
+            <span class="chip">Figma</span>
+            <span class="chip">Mobile app</span>          </div>
+        </div>      </div>
+
+      <div class="ll-grid">
+        <div class="vid ll-vid"><video src="media/lifelink.mp4" poster="media/lifelink.png" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the Lifelink prototype"></video></div>
+        <div class="board">
+          <div class="eyebrow">Figma board</div>
+          <img src="media/lifelink-figma.png" alt="Figma board for Lifelink showing the quiz, results, home, sign in, schedule, finances, AI feature, profile, settings, and add a card screens" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demos">
+    <div class="eyebrow">Prototype demos</div>
+    <h2 style="font-size:clamp(1.7rem,4vw,2.3rem)">See them in action</h2>
+    <div class="demos">
+      <figure class="demo d1">
+        <div class="vid"><video src="media/messages.mp4" poster="media/messages.png" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the Messages prototype"></video></div>
+        <div class="board">
+          <div><h3>Messages</h3><p>Contacts across the top and recent conversations below. Swipe a message to delete it, then confirm in a warning dialog.</p></div>
+          <div class="eyebrow">Figma board</div>
+          <img src="media/messages-figma.png" alt="Figma board for the Messages app showing the message list, a swipe-to-delete component, and a delete confirmation dialog" loading="lazy">
+        </div>
+      </figure>
+      <figure class="demo d2">
+        <div class="vid"><video src="media/chef.mp4" poster="media/chef.png" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the Hi Chef prototype"></video></div>
+        <div class="board">
+          <div><h3>Hi Chef</h3><p>See what friends are cooking, find chefs to follow, and browse popular ingredients. A live page adds a recording toggle and a chat for viewers.</p></div>
+          <div class="eyebrow">Figma board</div>
+          <img src="media/chef-figma.png" alt="Figma board for the Hi Chef app showing the menu, homepage, and live cooking page" loading="lazy">
+        </div>
+      </figure>
+      <figure class="demo d3">
+        <div class="vid"><video src="media/egypt.mp4" poster="media/egypt.png" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the Egypt travel prototype"></video></div>
+        <div class="board">
+          <div><h3>Egypt travel</h3><p>Search tourist attractions near you and book right from each card. A city page shares details, nearby luxuries, and a Book button.</p></div>
+          <div class="eyebrow">Figma board</div>
+          <img src="media/egypt-figma.png" alt="Figma board for the Egypt travel app showing the homepage, menu, and North Coast city details" loading="lazy">
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <footer>Designed in Figma.</footer>
+</div>
+
+</body>
+</html>
